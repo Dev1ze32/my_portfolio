@@ -1,7 +1,10 @@
 import { ArrowRight, MessageSquare } from 'lucide-react';
 import CodeDemo from './CodeDemo';
+import { useReveal } from '../hooks/useReveal';
 
 export default function Hero() {
+  const contentRef = useReveal();
+  const demoRef = useReveal();
   return (
     <section
       id="top"
@@ -15,7 +18,7 @@ export default function Hero() {
       </div>
 
       <div className="mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_1fr] lg:gap-10 2xl:gap-20">
-        <div className="max-w-[42ch]">
+        <div ref={contentRef} className="reveal max-w-[42ch]">
           <p className="load-in font-mono-label mb-5 flex items-center gap-2 text-[var(--color-accent)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
             Backend Developer
@@ -53,7 +56,7 @@ export default function Hero() {
           </p>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
+        <div ref={demoRef} className="reveal reveal-delay-2 flex justify-center lg:justify-end">
           <CodeDemo />
         </div>
       </div>

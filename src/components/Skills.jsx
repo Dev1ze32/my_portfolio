@@ -5,10 +5,10 @@ import SectionHeading from './SectionHeading';
 import { Terminal, Box, GitBranch, Cpu } from 'lucide-react';
 
 const floatingIcons = [
-  { Icon: Terminal, label: 'Python', top: '15%', left: '8%', rotate: '-6deg', delay: '0s' },
-  { Icon: Box, label: 'Docker', top: '65%', left: '5%', rotate: '5deg', delay: '1.8s' },
-  { Icon: GitBranch, label: 'Git', top: '20%', right: '5%', rotate: '7deg', delay: '0.9s' },
-  { Icon: Cpu, label: 'IoT', top: '72%', right: '8%', rotate: '-5deg', delay: '2.5s' },
+  { Icon: Terminal, label: 'Python', top: '15%', left: 'calc(50% - 49rem)', rotate: '-6deg', delay: '0s' },
+  { Icon: Box, label: 'Docker', top: '65%', left: 'calc(50% - 52rem)', rotate: '5deg', delay: '1.8s' },
+  { Icon: GitBranch, label: 'Git', top: '20%', right: 'calc(50% - 51rem)', rotate: '7deg', delay: '0.9s' },
+  { Icon: Cpu, label: 'IoT', top: '72%', right: 'calc(50% - 49rem)', rotate: '-5deg', delay: '2.5s' },
 ];
 
 function Group({ group }) {

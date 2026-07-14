@@ -13,7 +13,6 @@ export const nav = [
   { label: 'Approach', href: '#approach' },
   { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
 ];
 
 export const services = [
