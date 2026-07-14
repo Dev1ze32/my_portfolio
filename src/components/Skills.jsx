@@ -19,7 +19,7 @@ function Group({ group }) {
         {group.items.map((item) => (
           <li
             key={item}
-            className="rounded-[var(--radius-xs)] border border-[var(--color-rule)] px-2.5 py-1 text-[length:var(--text-sm)] text-[var(--color-ink-2)] transition-colors duration-[var(--dur-fast)] hover:border-[var(--color-accent)] hover:text-[var(--color-ink)]"
+            className="rounded-[var(--radius-xs)] border border-[var(--color-rule)] px-2.5 py-1 text-[length:var(--text-sm)] text-[var(--color-ink-2)] transition-[transform,color,border-color] duration-[var(--dur-fast)] hover:scale-[1.04] hover:border-[var(--color-accent)] hover:text-[var(--color-ink)]"
           >
             {item}
           </li>

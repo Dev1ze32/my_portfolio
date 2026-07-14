@@ -8,7 +8,7 @@ function ProjectCard({ project }) {
   return (
     <article
       ref={ref}
-      className="reveal grid grid-cols-1 gap-8 rounded-[var(--radius-md)] border border-[var(--color-rule)] p-6 transition-colors duration-[var(--dur-base)] hover:border-[var(--color-accent)] sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10"
+      className="reveal card-lift grid grid-cols-1 gap-8 rounded-[var(--radius-md)] border border-[var(--color-rule)] p-6 transition-colors duration-[var(--dur-base)] hover:border-[var(--color-accent)] sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10"
     >
       <div className="min-w-0">
         <div className="mb-3 flex flex-wrap items-center gap-2">

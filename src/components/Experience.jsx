@@ -8,7 +8,7 @@ export default function Experience() {
       <div className="mx-auto max-w-[var(--content-max)] px-[var(--page-gutter)]">
         <div
           ref={ref}
-          className="reveal grid grid-cols-1 gap-8 rounded-[var(--radius-md)] border border-[var(--color-rule)] p-6 sm:p-8 lg:grid-cols-2 lg:gap-14"
+          className="reveal card-lift grid grid-cols-1 gap-8 rounded-[var(--radius-md)] border border-[var(--color-rule)] p-6 sm:p-8 lg:grid-cols-2 lg:gap-14"
         >
           {experience.map((job) => (
             <div key={job.role}>

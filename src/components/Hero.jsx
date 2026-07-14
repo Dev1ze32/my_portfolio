@@ -5,26 +5,27 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[85vh] items-center border-b border-[var(--color-rule)] pt-24 pb-16 sm:pt-28"
+      className="relative flex min-h-[85vh] items-center overflow-hidden border-b border-[var(--color-rule)] pt-24 pb-16 sm:pt-28"
     >
+      <div className="glow-blob absolute right-[5%] top-[10%]" aria-hidden="true" />
       <div className="mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_1fr] lg:gap-10">
         <div className="max-w-[42ch]">
-          <p className="font-mono-label mb-5 flex items-center gap-2 text-[var(--color-accent)]">
+          <p className="load-in font-mono-label mb-5 flex items-center gap-2 text-[var(--color-accent)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
             Backend Developer
           </p>
 
-          <h1 className="text-[length:var(--text-display-s)] text-[var(--color-ink)]">
+          <h1 className="load-in load-in-1 text-[length:var(--text-display-s)] text-[var(--color-ink)]">
             Custom internal tools for businesses outgrowing spreadsheets.
           </h1>
 
-          <p className="mt-6 max-w-[46ch] text-[length:var(--text-lg)] text-[var(--color-ink-muted)]">
+          <p className="load-in load-in-2 mt-6 max-w-[46ch] text-[length:var(--text-lg)] text-[var(--color-ink-muted)]">
             I build custom internal systems that replace manual spreadsheet
             tracking with a single source of truth, built around how your
             business actually operates.
           </p>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="load-in load-in-3 mt-9 flex flex-wrap items-center gap-3">
             <a
               href="#contact"
               className="btn inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-[var(--color-accent)] px-5 py-3 text-[length:var(--text-sm)] font-medium text-[var(--color-accent-ink)] transition-colors duration-[var(--dur-fast)] hover:bg-[var(--color-accent-hover)]"
@@ -41,7 +42,7 @@ export default function Hero() {
             </a>
           </div>
 
-          <p className="font-mono-label mt-10 text-[var(--color-ink-faint)]">
+          <p className="load-in load-in-4 font-mono-label mt-10 text-[var(--color-ink-faint)]">
             Currently building for manufacturing &amp; academic operations teams
           </p>
         </div>

@@ -25,7 +25,7 @@ function Tile({ tile, index }) {
   return (
     <article
       ref={ref}
-      className={`reveal reveal-delay-${index} flex flex-col justify-between rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-paper)] p-6 transition-colors duration-[var(--dur-base)] hover:border-[var(--color-accent)] sm:p-7`}
+      className={`reveal card-lift reveal-delay-${index} flex flex-col justify-between rounded-[var(--radius-md)] border border-[var(--color-rule)] bg-[var(--color-paper)] p-6 transition-colors duration-[var(--dur-base)] hover:border-[var(--color-accent)] sm:p-7`}
     >
       <div>
         <p className="font-mono-label mb-3 text-[var(--color-ink-faint)]">{tile.tag}</p>
