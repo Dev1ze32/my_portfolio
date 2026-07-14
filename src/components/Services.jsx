@@ -1,6 +1,7 @@
 import { useReveal } from '../hooks/useReveal';
 import { services } from '../data/content';
 import SectionHeading from './SectionHeading';
+import ServiceVisual from './ServiceVisual';
 
 function FeaturedTile({ tile }) {
   const ref = useReveal();
@@ -9,13 +10,18 @@ function FeaturedTile({ tile }) {
       ref={ref}
       className="reveal rounded-[var(--radius-md)] border border-[var(--color-graphite-rule)] bg-[var(--color-graphite)] p-8 sm:p-10"
     >
-      <p className="font-mono-label mb-4 text-[var(--color-accent)]">{tile.tag}</p>
-      <h3 className="max-w-[32ch] text-[length:var(--text-2xl)] text-[var(--color-graphite-ink)]">
-        {tile.title}
-      </h3>
-      <p className="mt-4 max-w-[58ch] text-[length:var(--text-base)] leading-relaxed text-[var(--color-graphite-ink-muted)]">
-        {tile.body}
-      </p>
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+        <div>
+          <p className="font-mono-label mb-4 text-[var(--color-accent)]">{tile.tag}</p>
+          <h3 className="max-w-[32ch] text-[length:var(--text-2xl)] text-[var(--color-graphite-ink)]">
+            {tile.title}
+          </h3>
+          <p className="mt-4 max-w-[58ch] text-[length:var(--text-base)] leading-relaxed text-[var(--color-graphite-ink-muted)]">
+            {tile.body}
+          </p>
+        </div>
+        <ServiceVisual tag={tile.tag} onDark />
+      </div>
     </article>
   );
 }
@@ -34,6 +40,7 @@ function Tile({ tile, index }) {
           {tile.body}
         </p>
       </div>
+      <ServiceVisual tag={tile.tag} className="mt-6" />
     </article>
   );
 }
@@ -73,5 +80,3 @@ export default function Services() {
     </section>
   );
 }
-
-

@@ -65,7 +65,11 @@ body {
 }
 
 @layer base {
-  h1, h2, h3, h4 {
+
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     color: var(--color-ink);
     font-weight: 600;
@@ -122,11 +126,13 @@ button {
   html {
     scroll-behavior: auto;
   }
+
   .reveal {
     opacity: 1;
     transform: none;
     transition: none;
   }
+
   * {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
@@ -147,12 +153,29 @@ button {
 }
 
 /* ---- Stagger reveal delays ---- */
-.reveal-delay-0 { transition-delay: 0ms; }
-.reveal-delay-1 { transition-delay: 80ms; }
-.reveal-delay-2 { transition-delay: 160ms; }
-.reveal-delay-3 { transition-delay: 240ms; }
-.reveal-delay-4 { transition-delay: 320ms; }
-.reveal-delay-5 { transition-delay: 400ms; }
+.reveal-delay-0 {
+  transition-delay: 0ms;
+}
+
+.reveal-delay-1 {
+  transition-delay: 80ms;
+}
+
+.reveal-delay-2 {
+  transition-delay: 160ms;
+}
+
+.reveal-delay-3 {
+  transition-delay: 240ms;
+}
+
+.reveal-delay-4 {
+  transition-delay: 320ms;
+}
+
+.reveal-delay-5 {
+  transition-delay: 400ms;
+}
 
 /* ---- Floating skill icons ---- */
 .skill-float-card {
@@ -182,9 +205,12 @@ button {
 }
 
 @keyframes skill-float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: rotate(var(--float-rotate, 0deg)) translateY(var(--scroll-y, 0px));
   }
+
   50% {
     transform: rotate(var(--float-rotate, 0deg)) translateY(calc(var(--scroll-y, 0px) - 14px));
   }
@@ -203,9 +229,11 @@ button {
   transition: transform var(--dur-fast) var(--ease-out),
     background-color var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast);
 }
+
 .btn:hover {
   transform: translateY(-2px);
 }
+
 .btn:active {
   transform: translateY(0);
 }
@@ -214,6 +242,7 @@ button {
 .nav-link {
   position: relative;
 }
+
 .nav-link::after {
   content: '';
   position: absolute;
@@ -224,6 +253,7 @@ button {
   background: var(--color-accent);
   transition: width var(--dur-base) var(--ease-out);
 }
+
 .nav-link:hover::after {
   width: 100%;
 }
@@ -233,6 +263,7 @@ button {
   transition: transform var(--dur-base) var(--ease-out),
     box-shadow var(--dur-base) var(--ease-out), border-color var(--dur-fast);
 }
+
 .card-lift:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px -12px oklch(23% 0.02 258 / 0.18);
@@ -249,35 +280,163 @@ button {
   z-index: 0;
   animation: glow-drift 12s var(--ease-in-out) infinite;
 }
+
 @keyframes glow-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(20px, -30px) scale(1.08); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(20px, -30px) scale(1.08);
+  }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  .glow-blob { animation: none; }
+  .glow-blob {
+    animation: none;
+  }
 }
 
 /* 5. Hero load-in stagger */
 @keyframes fade-up-in {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
+
 .load-in {
   animation: fade-up-in var(--dur-slow) var(--ease-out) both;
 }
-.load-in-1 { animation-delay: 80ms; }
-.load-in-2 { animation-delay: 160ms; }
-.load-in-3 { animation-delay: 240ms; }
-.load-in-4 { animation-delay: 320ms; }
+
+.load-in-1 {
+  animation-delay: 80ms;
+}
+
+.load-in-2 {
+  animation-delay: 160ms;
+}
+
+.load-in-3 {
+  animation-delay: 240ms;
+}
+
+.load-in-4 {
+  animation-delay: 320ms;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .load-in { animation: none; opacity: 1; transform: none; }
+  .load-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* 6. Status badge pulse */
 .status--ok {
   animation: status-pulse 2.4s var(--ease-in-out) infinite;
 }
+
 @keyframes status-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 var(--color-accent-wash); }
-  50% { box-shadow: 0 0 0 4px transparent; }
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--color-accent-wash);
+  }
+
+  50% {
+    box-shadow: 0 0 0 4px transparent;
+  }
+}
+
+/* ---- Service visual diagrams (ServiceVisual.jsx) ---- */
+.sv-wrap {
+  border-radius: var(--radius-md);
+  background: var(--color-paper-2);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out);
+  overflow: hidden;
+}
+
+.sv-wrap.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.sv-wrap--dark {
+  background: var(--color-graphite-2);
+}
+
+.sv-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* linework draw-on, staggered by group */
+.sv-line {
+  stroke-width: 1;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  transition: stroke-dashoffset 700ms var(--ease-out);
+}
+
+.sv-wrap.is-in .sv-line {
+  stroke-dashoffset: 0;
+}
+
+.sv-wrap.is-in .sv-d1 {
+  transition-delay: 60ms;
+}
+
+.sv-wrap.is-in .sv-d2 {
+  transition-delay: 140ms;
+}
+
+.sv-wrap.is-in .sv-d3 {
+  transition-delay: 220ms;
+}
+
+/* slow pulse on the "live"/status accent dot */
+.sv-dot-pulse {
+  animation: sv-pulse 2.4s var(--ease-in-out) infinite;
+}
+
+@keyframes sv-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sv-wrap {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .sv-line {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+
+  .sv-dot-pulse {
+    animation: none;
+    opacity: 1;
+  }
 }
