@@ -67,6 +67,9 @@ export default function App() {
       >
         <ContactFooter />
       </div>
+
+      {/* Invisible anchor at the absolute bottom of the document to make href="#contact" work with the fixed footer */}
+      <div id="contact" className="absolute bottom-0 w-full" />
     </div>
   );
 }

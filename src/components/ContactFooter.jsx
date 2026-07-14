@@ -39,7 +39,7 @@ export default function ContactFooter() {
   }
 
   return (
-    <footer id="contact" className="scroll-mt-24 bg-[var(--color-graphite)] pt-[var(--space-3xl)]">
+    <footer className="scroll-mt-24 bg-[var(--color-graphite)] pt-[var(--space-3xl)]">
       <div className="mx-auto max-w-[var(--content-max)] px-[var(--page-gutter)]">
         <div ref={ref} className="reveal grid grid-cols-1 gap-14 pb-[var(--space-2xl)] lg:grid-cols-[1.1fr_1fr] lg:gap-20">
           <div>
