@@ -247,13 +247,15 @@ function AiDiagram({ c }) {
         <>
             {/* question bubble */}
             <g className="sv-line sv-d1" fill="none" stroke={c.rule}>
-                <path d="M8 20 h44 a4 4 0 0 1 4 4 v18 a4 4 0 0 1 -4 4 h-30 l-8 8 v-8 h-6 a4 4 0 0 1 -4 -4 v-18 a4 4 0 0 1 4 -4 z" />
+                <path d="M8 18 h48 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-28 l-9 9 v-9 h-11 a4 4 0 0 1 -4 -4 v-20 a4 4 0 0 1 4 -4 z" />
             </g>
-            <text x="16" y="34" fontSize="7" fill={c.muted} style={monoLabel}>what&apos;s our</text>
-            <text x="16" y="43" fontSize="7" fill={c.muted} style={monoLabel}>stock level?</text>
+            <text fontSize="6.5" fill={c.muted} style={monoLabel} textAnchor="middle">
+                <tspan x="32" y="30">what&apos;s our</tspan>
+                <tspan x="32" y="39">stock level?</tspan>
+            </text>
 
             {/* dashed wire to retriever */}
-            <path className="sv-line sv-d1" d="M60 40 Q 78 40, 88 46" fill="none" stroke={c.faint} strokeDasharray="1 3" />
+            <path className="sv-line sv-d1" d="M64 38 Q 78 40, 88 46" fill="none" stroke={c.faint} strokeDasharray="1 3" />
 
             {/* retriever chip */}
             <rect className="sv-line sv-d2" x="90" y="40" width="46" height="18" rx="9" fill="none" stroke={c.accent} />
@@ -282,53 +284,82 @@ function AiDiagram({ c }) {
 }
 
 // ---- BOTS -----------------------------------------------------------------
-// alt: phone silhouette with platform monogram chips + a command line.
+// alt: your internal system fans out to three chat platforms; one platform
+// shows a live query → answer exchange, same data your team already has.
 function BotsDiagram({ c }) {
-    const monograms = [
-        { label: 'D', x: 92 },
-        { label: 'V', x: 116 },
-        { label: 'T', x: 140 },
+    const platforms = [
+        { label: 'D', cy: 20 },
+        { label: 'V', cy: 58 },
+        { label: 'T', cy: 96 },
     ];
     return (
         <>
-            <rect
-                className="sv-line sv-d1"
-                x="76"
-                y="6"
-                width="88"
-                height="108"
-                rx="14"
-                fill="none"
-                stroke={c.rule}
-            />
-            <line className="sv-line sv-d1" x1="108" y1="14" x2="132" y2="14" stroke={c.faint} strokeWidth="2" />
-
-            <g className="sv-line sv-d2" fill="none" stroke={c.rule2}>
-                {monograms.map((m) => (
-                    <circle key={m.label} cx={m.x} cy="34" r="10" />
-                ))}
+            {/* your system, left */}
+            <g className="sv-line sv-d1" fill="none" stroke={c.rule}>
+                <rect x="6" y="40" width="36" height="36" rx="4" />
             </g>
-            {monograms.map((m, i) => (
-                <text
-                    key={m.label}
-                    x={m.x}
-                    y="37"
-                    fontSize="8"
-                    fill={i === 1 ? c.accent : c.muted}
-                    textAnchor="middle"
-                    style={monoLabel}
-                >
-                    {m.label}
-                </text>
-            ))}
-
-            <g className="sv-line sv-d3" fill="none" stroke={c.rule}>
-                <rect x="86" y="56" width="68" height="46" rx="3" />
+            <rect x="12" y="47" width="8" height="8" rx="2" fill={c.accent} />
+            <g className="sv-d1" stroke={c.faint}>
+                <line x1="24" y1="51" x2="36" y2="51" />
+                <line x1="12" y1="63" x2="36" y2="63" />
+                <line x1="12" y1="70" x2="30" y2="70" />
             </g>
-            <text x="92" y="70" fontSize="7" fill={c.faint} style={monoLabel}>
-                &gt; /stock SKU-204
+            <text x="24" y="86" fontSize="6.5" fill={c.faint} style={monoLabel} textAnchor="middle">
+                system
             </text>
-            <text x="92" y="84" fontSize="7.5" fill={c.accent} style={monoLabel}>
+
+            {/* fan-out wires to each platform */}
+            <path className="sv-line sv-d2" d="M42 58 Q 66 40, 84 20" fill="none" stroke={c.faint} strokeDasharray="1 3" />
+            <path className="sv-line sv-d2" d="M42 58 H82" fill="none" stroke={c.faint} strokeDasharray="1 3" />
+            <path className="sv-line sv-d2" d="M42 58 Q 66 76, 84 96" fill="none" stroke={c.faint} strokeDasharray="1 3" />
+
+            {/* platform monograms */}
+            {platforms.map((p) => {
+                const active = p.label === 'V';
+                return (
+                    <g key={p.label}>
+                        <circle
+                            className="sv-line sv-d2"
+                            cx="92"
+                            cy={p.cy}
+                            r={active ? 13 : 11}
+                            fill={active ? 'var(--color-accent-wash)' : 'none'}
+                            stroke={active ? c.accent : c.rule2}
+                            strokeWidth={active ? 1.4 : 1}
+                        />
+                        <text
+                            x="92"
+                            y={p.cy + 3}
+                            fontSize={active ? 8 : 7}
+                            fill={active ? c.accent : c.muted}
+                            textAnchor="middle"
+                            style={monoLabel}
+                        >
+                            {p.label}
+                        </text>
+                    </g>
+                );
+            })}
+
+            {/* live exchange on the active platform */}
+            <path className="sv-line sv-d3" d="M105 52 Q 116 44, 128 42" fill="none" stroke={c.faint} strokeDasharray="1 3" />
+            <rect className="sv-line sv-d3" x="130" y="32" width="94" height="20" rx="6" fill="none" stroke={c.faint} />
+            <text x="177" y="45.5" fontSize="6.5" fill={c.faint} style={monoLabel} textAnchor="middle">
+                /stock SKU-204
+            </text>
+
+            <path className="sv-line sv-d3" d="M105 66 Q 122 82, 140 86" fill="none" stroke={c.faint} strokeDasharray="1 3" />
+            <rect
+                className="sv-line sv-d3"
+                x="142"
+                y="76"
+                width="70"
+                height="22"
+                rx="6"
+                fill="var(--color-accent-wash)"
+                stroke={c.accent}
+            />
+            <text x="177" y="90.5" fontSize="7" fill={c.accent} style={monoLabel} textAnchor="middle">
                 142 on hand
             </text>
         </>
