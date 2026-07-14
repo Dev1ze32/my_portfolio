@@ -107,15 +107,17 @@ button {
 
 /* ---- Motion primitives ---- */
 .reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-slow) var(--ease-out);
+  opacity: var(--reveal-ratio, 0);
+  transform: translateY(calc((1 - var(--reveal-ratio, 0)) * 24px));
+  filter: blur(calc((1 - var(--reveal-ratio, 0)) * 8px));
+  /* Fallback transition for smooth interpolation between observer ticks */
+  transition: opacity 100ms ease-out, transform 100ms ease-out, filter 100ms ease-out;
 }
 
 .reveal.is-in {
   opacity: 1;
   transform: none;
+  filter: blur(0px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -170,7 +172,7 @@ button {
     0 8px 30px oklch(23% 0.02 258 / 0.10),
     0 2px 8px oklch(23% 0.02 258 / 0.06);
   animation: skill-float 5s var(--ease-in-out) infinite;
-  transform: rotate(var(--float-rotate, 0deg));
+  transform: rotate(var(--float-rotate, 0deg)) translateY(var(--scroll-y, 0px));
   pointer-events: none;
   z-index: 1;
 }
@@ -183,10 +185,10 @@ button {
 
 @keyframes skill-float {
   0%, 100% {
-    transform: rotate(var(--float-rotate, 0deg)) translateY(0);
+    transform: rotate(var(--float-rotate, 0deg)) translateY(var(--scroll-y, 0px));
   }
   50% {
-    transform: rotate(var(--float-rotate, 0deg)) translateY(-14px);
+    transform: rotate(var(--float-rotate, 0deg)) translateY(calc(var(--scroll-y, 0px) - 14px));
   }
 }
 

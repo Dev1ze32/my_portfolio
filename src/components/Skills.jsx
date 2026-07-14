@@ -1,4 +1,5 @@
 import { useReveal } from '../hooks/useReveal';
+import { useParallax } from '../hooks/useParallax';
 import { skillGroups } from '../data/content';
 import SectionHeading from './SectionHeading';
 import { Terminal, Box, GitBranch, Cpu } from 'lucide-react';
@@ -31,8 +32,10 @@ function Group({ group }) {
 
 export default function Skills() {
   const headingRef = useReveal();
+  const parallaxRef = useParallax('--scroll-y', -0.15); // Negative factor so they move slower than the page (parallax effect)
+  
   return (
-    <section id="skills" className="scroll-mt-24 relative overflow-hidden py-[var(--space-3xl)]">
+    <section ref={parallaxRef} id="skills" className="scroll-mt-24 relative overflow-hidden py-[var(--space-3xl)]">
       {floatingIcons.map(({ Icon, label, top, left, right, rotate, delay }) => (
         <div
           key={label}
