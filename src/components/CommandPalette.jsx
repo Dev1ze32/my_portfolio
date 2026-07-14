@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Search, ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+import { Search, ArrowRight, Mail } from 'lucide-react';
+import { Github, Linkedin } from './BrandIcons';
 import { nav, profile } from '../data/content';
 
 const externalCommands = [

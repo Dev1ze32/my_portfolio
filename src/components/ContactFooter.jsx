@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Github, Linkedin, Mail, Send } from 'lucide-react';
+import { Mail, Send } from 'lucide-react';
+import { Github, Linkedin } from './BrandIcons';
 import { profile } from '../data/content';
 import { useReveal } from '../hooks/useReveal';
 
