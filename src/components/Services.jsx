@@ -1,7 +1,7 @@
 import { useReveal } from '../hooks/useReveal';
 import { services } from '../data/content';
 import SectionHeading from './SectionHeading';
-import ServiceVisual from './ServiceVisual';
+import ServiceVisual from './Servicevisual';
 
 function FeaturedTile({ tile }) {
   const ref = useReveal();
