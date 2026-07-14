@@ -2,7 +2,7 @@ export const profile = {
   name: 'Wendell Dave Anciso',
   role: 'Backend Developer',
   location: 'Cabuyao, Laguna, Philippines',
-  email: 'ancisowendell32@email.com',
+  email: 'wendell320910@gmail.com',
   phone: '+63 921 279 2054',
   linkedin: 'https://www.linkedin.com/in/wendell-dave-anciso-074729225',
   github: 'https://github.com/Dev1ze32',
