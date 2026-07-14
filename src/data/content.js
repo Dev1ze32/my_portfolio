@@ -158,3 +158,31 @@ export const education = {
   school: 'University of Cabuyao',
   detail: 'Expected graduation: 2027',
 };
+
+export const businessValue = {
+  eyebrow: 'Why it matters to your bottom line',
+  title: "You're not buying software. You're buying time and certainty back.",
+  body: "Every hour your team spends reconciling spreadsheets, chasing the \u2018latest\u2019 version, or re-checking numbers by hand is an hour that isn\u2019t going toward the work that actually grows your business.",
+  points: [
+    {
+      title: 'Stop losing hours to manual busywork',
+      body: 'Every process that lives in a spreadsheet needs someone to update it, copy it, and double-check it by hand. A custom system does that automatically, so your team spends time on decisions, not data entry.',
+      icon: 'Clock',
+    },
+    {
+      title: 'Stop paying for spreadsheet mistakes',
+      body: 'A single overwritten formula or an outdated copy of a file can cost real money \u2014 a missed approval, a duplicated order, a wrong number sent to a client. A structured system removes that risk at the source.',
+      icon: 'ShieldCheck',
+    },
+    {
+      title: 'One system everyone actually trusts',
+      body: 'No more \u201cwhich version is correct\u201d across five email threads. Ops, management, and everyone in between look at the same live source of truth.',
+      icon: 'Database',
+    },
+    {
+      title: 'Built to grow with you, not against you',
+      body: 'Off-the-shelf tools charge you more and bend less the bigger you get. A system built around your actual workflow scales with your team instead of forcing your team to work around it.',
+      icon: 'TrendingUp',
+    },
+  ],
+};

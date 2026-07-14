@@ -53,7 +53,7 @@ export default function CodeDemo() {
   return (
     <div
       ref={cardRef}
-      className="code-card w-full max-w-[480px] overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-rule-2)] bg-[var(--color-graphite)] shadow-[0_1px_2px_oklch(24%_0.02_258/0.05)]"
+      className="code-card w-full max-w-[480px] xl:max-w-[540px] overflow-hidden rounded-[var(--radius-md)] border border-[var(--color-rule-2)] bg-[var(--color-graphite)] shadow-[0_1px_2px_oklch(24%_0.02_258/0.05)]"
     >
       <div className="flex items-center gap-2 border-b border-[var(--color-graphite-rule)] px-4 py-2.5">
         <span className="flex gap-1.5" aria-hidden="true">

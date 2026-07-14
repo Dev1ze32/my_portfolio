@@ -1,6 +1,7 @@
 import Nav from './components/Nav';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import BusinessValue from './components/BusinessValue';
 import Approach from './components/Approach';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
@@ -16,6 +17,7 @@ export default function App() {
       <main>
         <Hero />
         <Services />
+        <BusinessValue />
         <Approach />
         <Projects />
         <Skills />

@@ -8,7 +8,13 @@ export default function Hero() {
       className="relative flex min-h-[85vh] items-center overflow-hidden border-b border-[var(--color-rule)] pt-24 pb-16 sm:pt-28"
     >
       <div className="glow-blob absolute right-[5%] top-[10%]" aria-hidden="true" />
-      <div className="mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_1fr] lg:gap-10">
+      
+      {/* NEW — decorative fill, large screens only */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden overflow-hidden 2xl:block">
+        <div className="absolute -right-24 top-1/2 h-[560px] w-[560px] -translate-y-1/2 rounded-full bg-[var(--color-accent-wash)] blur-3xl" />
+      </div>
+
+      <div className="mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_1fr] lg:gap-10 2xl:gap-20">
         <div className="max-w-[42ch]">
           <p className="load-in font-mono-label mb-5 flex items-center gap-2 text-[var(--color-accent)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)]" />
