@@ -108,17 +108,14 @@ button {
 /* ---- Motion primitives ---- */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  filter: blur(8px);
+  transform: translateY(14px);
   transition: opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-slow) var(--ease-out),
-    filter var(--dur-slow) var(--ease-out);
+    transform var(--dur-slow) var(--ease-out);
 }
 
 .reveal.is-in {
   opacity: 1;
   transform: none;
-  filter: blur(0px);
 }
 
 @media (prefers-reduced-motion: reduce) {
