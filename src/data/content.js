@@ -131,6 +131,16 @@ export const projects = [
 
 export const experience = [
   {
+    role: 'Developer Intern',
+    org: 'Pioneer Adhesives Inc.',
+    time: 'Internship',
+    points: [
+      'Developed an end-to-end routing solution to centralize fragmented Excel spreadsheets into a single source of truth',
+      'Designed and deployed a robust PostgreSQL database to manage critical product routing workflows',
+      'Built a full-stack system comprising a custom REST API and frontend interface to streamline internal operations',
+    ],
+  },
+  {
     role: 'Chatbot Builder Intern',
     org: 'SOFI AI Tech Solution Inc.',
     time: '1 month',
