@@ -40,24 +40,28 @@ export default function App() {
   const isRevealAllowed = footerHeight > 0 && windowHeight > 0 && footerHeight <= windowHeight;
 
   return (
-    <div className="relative">
+    <div className="relative bg-[var(--color-graphite)]">
       <ScrollProgress />
-      {/* everything above the footer sits on top, with a solid bg,
-          and reveals the footer at the very end of the scroll if it fits */}
-      <div
-        className="relative z-10 border-b border-[var(--color-rule)] bg-[var(--color-paper)] shadow-[0_-1px_0_var(--color-rule)]"
+      
+      {/* EVERYTHING that scrolls must sit above the footer (z-10) and be fully opaque */}
+      <div 
+        className="relative z-10 bg-[var(--color-graphite)]"
         style={{ marginBottom: isRevealAllowed ? footerHeight : 0 }}
       >
         <Nav />
-        <main>
-          <Hero />
-          <Services />
-          <BusinessValue />
-          <Approach />
-          <Projects />
-          <Skills />
-          <Experience />
-        </main>
+        <Hero />
+        
+        {/* The rest of the page sits in a white "card" that slightly overlaps the hero */}
+        <div className="relative z-20 -mt-10 overflow-hidden rounded-t-[2.5rem] border-b border-[var(--color-rule)] bg-[var(--color-paper)] shadow-[0_-15px_40px_rgba(0,0,0,0.3)] sm:-mt-16 sm:rounded-t-[3.5rem]">
+          <main className="pt-6 sm:pt-10">
+            <Services />
+            <BusinessValue />
+            <Approach />
+            <Projects />
+            <Skills />
+            <Experience />
+          </main>
+        </div>
       </div>
 
       {/* fixed at the bottom if it fits in viewport, otherwise scrolls naturally */}

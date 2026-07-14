@@ -133,15 +133,24 @@ function Scene() {
 
   return (
     <group ref={groupRef}>
-      <DatabaseShape position={[-4, 1.5, -5]} />
-      <ContainerBox position={[5, -0.5, -4]} />
-      <ServerNode position={[3, 2.5, -7]} />
-      <PipelineRing position={[-5.5, -1.5, -6]} scale={1.2} />
-      <PipelineRing position={[1, 3, -8]} scale={0.8} />
-      <NodeSphere position={[-2, -2, -3]} color="#7dd3fc" size={0.35} />
-      <NodeSphere position={[6, 1, -6]} color="#0ea5e9" size={0.25} />
-      <NodeSphere position={[-6, 3, -7]} color="#bae6fd" size={0.2} />
-      <NodeSphere position={[0, -3, -5]} color="#22d3ee" size={0.3} />
+      {/* Top-right corner area */}
+      <DatabaseShape position={[9, 3.8, -7]} />
+      <NodeSphere position={[3, 5, -9]} color="#7dd3fc" size={0.25} />
+
+      {/* Far right edge */}
+      <ServerNode position={[0, 0, -8]} />
+      <NodeSphere position={[11, -2, -6]} color="#0ea5e9" size={0.2} />
+
+      {/* Bottom-right corner area */}
+      <ContainerBox position={[7, -2.9, -6]} />
+      <PipelineRing position={[4, -5, -8]} scale={0.9} />
+
+      {/* Bottom-center-right (below terminal) */}
+      <PipelineRing position={[3, -4.5, -7]} scale={0.7} />
+      <NodeSphere position={[11, -2.5, -5]} color="#22d3ee" size={0.28} />
+
+      {/* Top-center-right (above terminal) */}
+      <NodeSphere position={[2, 4.5, -10]} color="#bae6fd" size={0.18} />
     </group>
   );
 }

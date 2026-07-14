@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { ArrowRight, MessageSquare } from 'lucide-react';
 import CodeDemo from './CodeDemo';
 import { useReveal } from '../hooks/useReveal';
@@ -6,15 +7,40 @@ import Hero3D from './Hero3D';
 export default function Hero() {
   const contentRef = useReveal();
   const demoRef = useReveal();
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Fade out over 600px of scroll, and move down at 40% speed for parallax depth
+  const opacity = Math.max(0, 1 - scrollY / 600);
+  const translateY = scrollY * 0.4;
   
   return (
     <section
       id="top"
-      className="relative flex min-h-[85vh] items-center overflow-hidden pb-32 pt-24 sm:pt-28"
+      className="relative flex min-h-[85vh] items-center overflow-hidden bg-[var(--color-graphite)] pb-32 pt-24 sm:pt-28"
     >
-      <Hero3D />
+      <div 
+        className="absolute inset-0 z-0 h-full w-full"
+        style={{ 
+          opacity, 
+          transform: `translate3d(0, ${translateY}px, 0)` 
+        }}
+      >
+        <Hero3D />
+      </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_1fr] lg:gap-10 2xl:gap-20">
+      <div 
+        className="relative z-10 mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_1fr] lg:gap-10 2xl:gap-20"
+        style={{ 
+          opacity, 
+          transform: `translate3d(0, ${translateY}px, 0)` 
+        }}
+      >
         <div ref={contentRef} className="reveal max-w-[42ch]">
           <p className="load-in font-mono-label mb-5 flex items-center gap-2 text-[var(--color-accent)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] shadow-[0_0_8px_var(--color-accent)]" />
@@ -58,8 +84,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Gradient fade BELOW content, with enough space so it never touches text */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-[var(--color-paper)]" />
     </section>
   );
 }
