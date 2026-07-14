@@ -107,11 +107,12 @@ button {
 
 /* ---- Motion primitives ---- */
 .reveal {
-  opacity: var(--reveal-ratio, 0);
-  transform: translateY(calc((1 - var(--reveal-ratio, 0)) * 24px));
-  filter: blur(calc((1 - var(--reveal-ratio, 0)) * 8px));
-  /* Fallback transition for smooth interpolation between observer ticks */
-  transition: opacity 100ms ease-out, transform 100ms ease-out, filter 100ms ease-out;
+  opacity: 0;
+  transform: translateY(24px);
+  filter: blur(8px);
+  transition: opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out),
+    filter var(--dur-slow) var(--ease-out);
 }
 
 .reveal.is-in {
