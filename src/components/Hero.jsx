@@ -15,14 +15,20 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Fade out over 600px of scroll, and move down at 40% speed for parallax depth
-  const opacity = Math.max(0, 1 - scrollY / 600);
-  const translateY = scrollY * 0.4;
+  // Don't fade until the user has scrolled almost an entire screen down
+  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+  const fadeStart = windowHeight * 0.8;
+  const fadeDistance = 400;
+  const opacity = scrollY < fadeStart 
+    ? 1 
+    : Math.max(0, 1 - (scrollY - fadeStart) / fadeDistance);
+    
+  const translateY = scrollY * 0.3; // slightly softer parallax
   
   return (
     <section
       id="top"
-      className="relative flex min-h-[85vh] items-center overflow-hidden bg-[var(--color-graphite)] pb-32 pt-24 sm:pt-28"
+      className="relative flex min-h-[100dvh] items-center overflow-hidden bg-[var(--color-graphite)] pb-24 pt-16 lg:min-h-[calc(100vh+4rem)] lg:pb-28 lg:pt-20"
     >
       <div 
         className="absolute inset-0 z-0 h-full w-full"
@@ -35,7 +41,7 @@ export default function Hero() {
       </div>
 
       <div 
-        className="relative z-10 mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] lg:grid-cols-[1.05fr_1fr] lg:gap-10 2xl:gap-20"
+        className="relative z-10 mx-auto grid w-full max-w-[var(--content-max)] grid-cols-1 items-center gap-14 px-[var(--page-gutter)] md:grid-cols-[1.05fr_1fr] md:gap-8 2xl:gap-20"
         style={{ 
           opacity, 
           transform: `translate3d(0, ${translateY}px, 0)` 
