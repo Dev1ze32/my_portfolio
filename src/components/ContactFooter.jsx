@@ -6,18 +6,35 @@ import { useReveal } from '../hooks/useReveal';
 export default function ContactFooter() {
   const ref = useReveal();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('idle');
 
   function handleChange(e) {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    const subject = encodeURIComponent(`Automation project inquiry from ${form.name || 'your site'}`);
-    const body = encodeURIComponent(
-      `${form.message}\n\n— ${form.name}\n${form.email}`
-    );
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    setStatus('loading');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        setForm({ name: '', email: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setStatus('error');
+    }
   }
 
   return (
@@ -69,7 +86,8 @@ export default function ContactFooter() {
                   name="name"
                   value={form.name}
                   onChange={handleChange}
-                  className="w-full rounded-[var(--radius-sm)] border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2.5 text-[length:var(--text-sm)] text-[var(--color-ink)] outline-none transition-colors duration-[var(--dur-fast)] focus:border-[var(--color-accent)]"
+                  disabled={status === 'loading' || status === 'success'}
+                  className="w-full rounded-[var(--radius-sm)] border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2.5 text-[length:var(--text-sm)] text-[var(--color-ink)] outline-none transition-colors duration-[var(--dur-fast)] focus:border-[var(--color-accent)] disabled:opacity-50"
                   placeholder="Jordan Cruz"
                 />
               </label>
@@ -81,33 +99,61 @@ export default function ContactFooter() {
                   name="email"
                   value={form.email}
                   onChange={handleChange}
-                  className="w-full rounded-[var(--radius-sm)] border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2.5 text-[length:var(--text-sm)] text-[var(--color-ink)] outline-none transition-colors duration-[var(--dur-fast)] focus:border-[var(--color-accent)]"
+                  disabled={status === 'loading' || status === 'success'}
+                  className="w-full rounded-[var(--radius-sm)] border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2.5 text-[length:var(--text-sm)] text-[var(--color-ink)] outline-none transition-colors duration-[var(--dur-fast)] focus:border-[var(--color-accent)] disabled:opacity-50"
                   placeholder="you@company.com"
                 />
               </label>
             </div>
-            <label className="mt-4 block">
-              <span className="font-mono-label mb-1.5 block text-[var(--color-ink-faint)]">What's the workflow?</span>
-              <textarea
-                required
-                name="message"
-                rows={4}
-                value={form.message}
-                onChange={handleChange}
-                className="w-full resize-none rounded-[var(--radius-sm)] border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2.5 text-[length:var(--text-sm)] text-[var(--color-ink)] outline-none transition-colors duration-[var(--dur-fast)] focus:border-[var(--color-accent)]"
-                placeholder="We track vendor approvals in a shared spreadsheet and it's fallen apart…"
-              />
-            </label>
-            <button
-              type="submit"
-              className="btn mt-5 inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-[var(--color-accent)] px-5 py-2.5 text-[length:var(--text-sm)] font-medium text-[var(--color-accent-ink)] transition-colors duration-[var(--dur-fast)] hover:bg-[var(--color-accent-hover)]"
-            >
-              <Send size={15} />
-              Send inquiry
-            </button>
-            <p className="mt-3 text-[length:var(--text-xs)] text-[var(--color-ink-faint)]">
-              Opens your email client with this pre-filled — nothing is sent from this page.
-            </p>
+            
+            {status === 'success' ? (
+              <div className="mt-4 rounded-[var(--radius-sm)] border border-[var(--color-rule-2)] bg-[var(--color-graphite)] p-5 text-center">
+                <p className="text-[length:var(--text-base)] text-[var(--color-graphite-ink)]">
+                  Message sent successfully.
+                </p>
+                <p className="mt-1 text-[length:var(--text-sm)] text-[var(--color-graphite-ink-muted)]">
+                  I'll be in touch soon.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setStatus('idle')}
+                  className="mt-4 text-[length:var(--text-sm)] text-[var(--color-accent)] hover:underline"
+                >
+                  Send another
+                </button>
+              </div>
+            ) : (
+              <>
+                <label className="mt-4 block">
+                  <span className="font-mono-label mb-1.5 block text-[var(--color-ink-faint)]">What's the workflow?</span>
+                  <textarea
+                    required
+                    name="message"
+                    rows={4}
+                    value={form.message}
+                    onChange={handleChange}
+                    disabled={status === 'loading'}
+                    className="w-full resize-none rounded-[var(--radius-sm)] border border-[var(--color-rule)] bg-[var(--color-paper)] px-3 py-2.5 text-[length:var(--text-sm)] text-[var(--color-ink)] outline-none transition-colors duration-[var(--dur-fast)] focus:border-[var(--color-accent)] disabled:opacity-50"
+                    placeholder="We track vendor approvals in a shared spreadsheet and it's fallen apart…"
+                  />
+                </label>
+                
+                {status === 'error' && (
+                  <p className="mt-3 text-[length:var(--text-sm)] text-red-500">
+                    Something went wrong. Please try again or email me directly.
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  className="btn mt-5 inline-flex items-center gap-2 rounded-[var(--radius-sm)] bg-[var(--color-accent)] px-5 py-2.5 text-[length:var(--text-sm)] font-medium text-[var(--color-accent-ink)] transition-colors duration-[var(--dur-fast)] hover:bg-[var(--color-accent-hover)] disabled:cursor-not-allowed disabled:opacity-70"
+                >
+                  <Send size={15} />
+                  {status === 'loading' ? 'Sending...' : 'Send inquiry'}
+                </button>
+              </>
+            )}
           </form>
         </div>
 

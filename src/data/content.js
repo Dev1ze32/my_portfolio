@@ -95,10 +95,6 @@ export const skillGroups = [
     label: 'Automation & AI',
     items: ['Excel / Google Sheets automation', 'Google Apps Script', 'Prompt engineering', 'RAG', 'LangGraph', 'LLM APIs'],
   },
-  {
-    label: 'Hardware / IoT',
-    items: ['Arduino', 'ESP microcontrollers', 'Raspberry Pi', 'Circuit design & prototyping'],
-  },
 ];
 
 export const projects = [
