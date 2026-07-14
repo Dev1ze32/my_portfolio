@@ -1,0 +1,81 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Bento Grid · theme: Cobalt (luxury-tuned)
+ * nav: N13 Inline ⌘K search pill · footer: Ft5 Statement
+ * F1 Bento knobs: tiles=7, spans=irregular, accent=corner-only
+ * paper band: cool light (L98.5, hue~250) · display: grotesk-sans (Space Grotesk) · accent: electric cobalt (oklch 58% 0.20 256)
+ */
+
+:root {
+  /* ---- Color: paper & ink (cool engineered near-white, never pure #fff/#000) ---- */
+  --color-paper: oklch(98.4% 0.004 250);
+  --color-paper-2: oklch(96.5% 0.006 250);
+  --color-paper-3: oklch(94% 0.008 252);
+  --color-ink: oklch(23% 0.02 258);
+  --color-ink-2: oklch(34% 0.018 257);
+  --color-ink-muted: oklch(52% 0.014 257);
+  --color-ink-faint: oklch(66% 0.01 255);
+
+  /* ---- Color: the one signal ---- */
+  --color-accent: oklch(58% 0.2 256);
+  --color-accent-hover: oklch(52% 0.21 256);
+  --color-accent-ink: oklch(99% 0.005 250);
+  --color-accent-wash: oklch(58% 0.2 256 / 0.08);
+
+  /* ---- Color: structure ---- */
+  --color-rule: oklch(89% 0.006 250);
+  --color-rule-2: oklch(35% 0.02 258);
+
+  /* ---- Color: the one dark graphite band ---- */
+  --color-graphite: oklch(19% 0.016 260);
+  --color-graphite-2: oklch(24% 0.018 259);
+  --color-graphite-ink: oklch(95% 0.008 250);
+  --color-graphite-ink-muted: oklch(68% 0.02 255);
+  --color-graphite-rule: oklch(32% 0.02 258);
+
+  /* ---- Color: status ---- */
+  --color-ok: var(--color-accent);
+
+  /* ---- Type ---- */
+  --font-display: 'Space Grotesk', ui-sans-serif, sans-serif;
+  --font-body: 'Inter', ui-sans-serif, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.1875rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.375rem;
+  --text-4xl: 3rem;
+  --text-display-s: clamp(2.25rem, 1.1rem + 3.4vw, 3.75rem);
+  --text-display: clamp(2.75rem, 1.2rem + 4.5vw, 5rem);
+
+  /* ---- Spacing (4pt scale, generous — luxury tone) ---- */
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1.25rem;
+  --space-md: 1.75rem;
+  --space-lg: 2.5rem;
+  --space-xl: 3.75rem;
+  --space-2xl: 5.5rem;
+  --space-3xl: 8rem;
+
+  /* ---- Radii (drawn with a ruler — technical, not brutalist) ---- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 320ms;
+  --dur-slow: 640ms;
+
+  /* ---- Layout ---- */
+  --page-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --content-max: 74rem;
+}
